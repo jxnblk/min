@@ -1,5 +1,6 @@
 
 require('babel/register')
+var webpack = require('webpack')
 var StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin')
 
 var data = require('./data')
@@ -50,6 +51,12 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      '__STATIC': 'true',
+      'process.env': {
+        'BASE_URL': JSON.stringify(process.env.BASE_URL) || '""'
+      }
+    }),
     new StaticSiteGeneratorPlugin('bundle.js', routes, data)
   ]
 

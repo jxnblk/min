@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Bare minimum React + webbpack + hot loader",
   "scripts": {
-    "build": "webpack --progress --colors --config webpack.static.config.js",
-    "start": "webpack-dev-server --progress --colors --config webpack.dev.config.js"
+    "build": "webpack --config webpack.static.config.js",
+    "dev": "webpack-dev-server --config webpack.dev.config.js",
+    "start": "BASE_URL=/dist npm run build && npm run dev"
   },
   "author": "Brent Jackson",
   "license": "MIT",

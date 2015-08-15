@@ -10,7 +10,7 @@ module.exports = {
   ],
 
   output: {
-    path: __dirname,
+    path: __dirname + '/dist',
     filename: 'bundle.js'
   },
 
@@ -38,6 +38,7 @@ module.exports = {
   ],
 
   devServer: {
+    contentBase: './dist',
     historyApiFallback: true,
     hot: true,
   }
