@@ -7,7 +7,7 @@ import About from './components/About'
 
 import { assign } from 'lodash'
 import data from './data'
-const { baseurl } = data
+const { baseurl } = data.getState()
 
 const routes = [
   assign({
@@ -19,7 +19,7 @@ const routes = [
       },
       { path: baseurl + '/about', component: About },
     ]
-  }, data)
+  }, data.getState())
 ]
 
 export default routes

@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "Bare minimum React + webbpack + hot loader",
   "scripts": {
-    "prod": "BASE_URL=/base webpack --config webpack.static.config.js",
+    "prod": "BASE_URL=/min webpack -p --config webpack.static.config.js",
     "static": "webpack -w --config webpack.static.config.js",
     "dev": "webpack-dev-server --config webpack.dev.config.js",
+    "clean": "rm -rf dist/*",
+    "gh-pages": "git subtree push --prefix dist/min origin gh-pages",
     "start": "npm run static & npm run dev"
   },
   "author": "Brent Jackson",
@@ -13,6 +15,7 @@
   "dependencies": {
     "babel": "^5.8.21",
     "babel-loader": "^5.3.2",
+    "css-loader": "^0.16.0",
     "lodash": "^3.10.1",
     "normalize.css": "^3.0.3",
     "raw-loader": "^0.5.1",

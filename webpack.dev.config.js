@@ -1,5 +1,8 @@
 
+require('babel/register')
 var webpack = require('webpack')
+var data = require('./data')
+var baseurl = data.getState().baseurl
 
 module.exports = {
 
@@ -25,10 +28,7 @@ module.exports = {
         exclude: /node_modules/,
         loaders: ['react-hot', 'babel']
       },
-      {
-        test: /\.css$/,
-        loaders: ['style', 'raw']
-      }
+      { test: /\.css$/, loader: 'css' }
     ]
   },
 
@@ -38,7 +38,7 @@ module.exports = {
   ],
 
   devServer: {
-    contentBase: './dist',
+    contentBase: './dist/',
     historyApiFallback: true,
     hot: true,
   }

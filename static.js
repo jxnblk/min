@@ -5,8 +5,11 @@ import { Router } from 'react-router'
 import Location from 'react-router/lib/Location'
 import routes from './routes'
 import Root from './components/Root'
+import css from 'normalize.css/normalize.css'
 
-import { baseurl } from './data'
+import data from './data'
+data.setState({ css: css.toString() })
+const { baseurl } = data.getState()
 
 if (typeof window !== 'undefined') {
   require('./entry')

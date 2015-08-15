@@ -4,7 +4,7 @@ var webpack = require('webpack')
 var StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin')
 
 var data = require('./data')
-var baseurl = data.baseurl
+var baseurl = data.getState().baseurl
 
 // Doesn't handle dynamic segments
 var routes = require('./routes')
@@ -45,16 +45,12 @@ module.exports = {
         exclude: /node_modules/,
         loaders: ['react-hot', 'babel']
       },
-      {
-        test: /\.css$/,
-        loaders: ['style', 'raw']
-      }
+      { test: /\.css$/, loader: 'css' }
     ]
   },
 
   plugins: [
     new webpack.DefinePlugin({
-      '__STATIC': 'true',
       'process.env': {
         'BASE_URL': JSON.stringify(process.env.BASE_URL) || '""'
       }
