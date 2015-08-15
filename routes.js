@@ -5,14 +5,21 @@ import App from './components/App'
 import Home from './components/Home'
 import About from './components/About'
 
+import { assign } from 'lodash'
+import data from './data'
+const { baseurl } = data
+
 const routes = [
-  {
+  assign({
     component: App,
     childRoutes: [
-      { path: '/', component: Home },
-      { path: '/about', component: About },
+      {
+        path: baseurl.length ? baseurl : '/',
+        component: Home
+      },
+      { path: baseurl + '/about', component: About },
     ]
-  }
+  }, data)
 ]
 
 export default routes

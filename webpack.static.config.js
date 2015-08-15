@@ -4,13 +4,16 @@ var webpack = require('webpack')
 var StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin')
 
 var data = require('./data')
+var baseurl = data.baseurl
+
 // Doesn't handle dynamic segments
 var routes = require('./routes')
   .reduce(function (a, b, i) {
     var arr = []
     function getPaths(route) {
       if (route.path) {
-        arr.push(route.path)
+        var path = route.path.replace(baseurl, '')
+        arr.push(path)
       }
       if (route.childRoutes) {
         route.childRoutes.forEach(function (childRoute) {
@@ -22,13 +25,12 @@ var routes = require('./routes')
     return a.concat(arr)
   }, [])
 
-
 module.exports = {
   entry: './static.js',
 
   output: {
     filename: 'bundle.js',
-    path: __dirname + '/dist',
+    path: __dirname + '/dist' + baseurl,
     libraryTarget: 'umd'
   },
 

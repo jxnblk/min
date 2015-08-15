@@ -6,16 +6,15 @@ import Root from './Root'
 export default class App extends React.Component {
 
   render() {
-    const { children } = this.props
+    const { children, route } = this.props
     const styles = {
       root: {
         padding: 32
       }
     }
-    console.log('App props', this.props)
 
     return (
-      <Root {...this.props}>
+      <Root {...this.props} baseurl={route.baseurl}>
         <div style={styles.root}>
           <h1>jxnblk/min</h1>
           <p>Bare minimum React + webpack + hot loader</p>

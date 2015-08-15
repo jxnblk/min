@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "Bare minimum React + webbpack + hot loader",
   "scripts": {
-    "build": "webpack --config webpack.static.config.js",
+    "prod": "BASE_URL=/base webpack --config webpack.static.config.js",
+    "static": "webpack -w --config webpack.static.config.js",
     "dev": "webpack-dev-server --config webpack.dev.config.js",
-    "start": "BASE_URL=/dist npm run build && npm run dev"
+    "start": "npm run static & npm run dev"
   },
   "author": "Brent Jackson",
   "license": "MIT",
