@@ -35622,7 +35622,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        ),
 	        children,
 	        _react2['default'].createElement('script', { dangerouslySetInnerHTML: {
-	            __html: 'window.__INIT=' + (0, _serializeJavascript2['default'])(init)
+	            __html: 'window.__INIT=' + (0, _serializeJavascript2['default'])({})
 	          } }),
 	        _react2['default'].createElement('script', { src: baseurl + '/bundle.js' })
 	      );

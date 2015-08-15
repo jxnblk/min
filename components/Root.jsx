@@ -15,7 +15,7 @@ export default class Root extends React.Component {
         <title>Root</title>
         {children}
         <script dangerouslySetInnerHTML={{
-          __html: `window.__INIT=${serialize(init)}`
+          __html: `window.__INIT=${serialize({})}`
         }} />
         <script src={`${baseurl}/bundle.js`} />
       </html>
