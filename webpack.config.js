@@ -10,16 +10,16 @@ const routes = [
 module.exports = {
 
   entry: {
-    bundle: ['./entry'],
+    bundle: ['./static'],
     hot: [
       'webpack-dev-server/client?http://localhost:8080/',
       'webpack/hot/only-dev-server',
-      './entry'
+      './index'
     ]
   },
 
   output: {
-    path: __dirname,
+    path: __dirname + '/dist',
     filename: '[name].js',
     libraryTarget: 'umd'
   },
@@ -37,7 +37,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loaders: ['raw']
+        loaders: ['css']
       }
     ]
   },
@@ -49,6 +49,7 @@ module.exports = {
   ],
 
   devServer: {
+    contentBase: './dist',
     historyApiFallback: true,
     hot: true,
   }
