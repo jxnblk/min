@@ -1,17 +1,27 @@
 
 var webpack = require('webpack')
+var StaticRenderPlugin = require('static-render-webpack-plugin')
+
+const routes = [
+  '/',
+  '/about'
+]
 
 module.exports = {
 
-  entry:  [
-    'webpack-dev-server/client?http://localhost:8080/',
-    'webpack/hot/only-dev-server',
-    './entry'
-  ],
+  entry: {
+    bundle: ['./entry'],
+    hot: [
+      'webpack-dev-server/client?http://localhost:8080/',
+      'webpack/hot/only-dev-server',
+      './entry'
+    ]
+  },
 
   output: {
     path: __dirname,
-    filename: 'bundle.js'
+    filename: '[name].js',
+    libraryTarget: 'umd'
   },
 
   resolve: {
@@ -27,14 +37,15 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loaders: ['style', 'raw']
+        loaders: ['raw']
       }
     ]
   },
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new StaticRenderPlugin('bundle.js', routes)
   ],
 
   devServer: {
