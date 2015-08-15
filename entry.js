@@ -17,5 +17,8 @@ const routes = [
   }
 ]
 
-React.render(<Router children={routes} history={history} />, document.getElementById('app'))
+React.render(
+  <Router routes={routes} history={history} />,
+  document.querySelector('#app')
+)
 

@@ -1,5 +1,6 @@
 
 import React from 'react'
+import { clone } from 'lodash'
 import { Link } from 'react-router'
 
 export default class App extends React.Component {
@@ -11,6 +12,8 @@ export default class App extends React.Component {
         padding: 32
       }
     }
+    let props = clone(this.props)
+    delete props.children
 
     return (
       <div style={styles.root}>
@@ -20,7 +23,8 @@ export default class App extends React.Component {
           <Link to='/' children='Home' />
           <Link to='/about' children='About' />
         </nav>
-        {children}
+        {React.cloneElement(children, this.props)}
+        <pre>{JSON.stringify(props, null, '  ')}</pre>
       </div>
     )
   }
