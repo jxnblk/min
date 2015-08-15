@@ -14,9 +14,8 @@ if (typeof window !== 'undefined') {
 export default function render(locals, callback) {
   const location = new Location(locals.path)
   Router.run(routes, location, (err, state) => {
-    const props = assign({}, state, locals)
-    const app = React.renderToString(<Router {...props} />)
-    const html = React.renderToStaticMarkup(<Root app={app} {...data} />)
+    const props = assign({}, state, locals, data)
+    const html = React.renderToString(<Router {...props} />)
     callback(null, `<!DOCTYPE html>${html}`)
   })
 }

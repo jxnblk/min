@@ -1,20 +1,21 @@
 
 import React from 'react'
+import { assign } from 'lodash'
 import serialize from 'serialize-javascript'
 
 export default class Root extends React.Component {
 
   render() {
-    const { app, children, baseurl } = this.props
-    console.log('Root props', this.props)
+    const { children, baseurl } = this.props
+    let init = assign({}, this.props)
+    delete init.children
 
     return (
       <html>
         <title>Root</title>
-        {app ? <div id='app' dangerouslySetInnerHTML={{ __html: app }} /> : false}
-        {children ? <div id='app'>{children}</div> : false}
+        {children}
         <script dangerouslySetInnerHTML={{
-          __html: `window.__INIT=${serialize({})}`
+          __html: `window.__INIT=${serialize(init)}`
         }} />
         <script src={`${baseurl}/bundle.js`} />
       </html>

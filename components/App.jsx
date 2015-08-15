@@ -1,6 +1,7 @@
 
 import React from 'react'
 import { Link } from 'react-router'
+import Root from './Root'
 
 export default class App extends React.Component {
 
@@ -11,17 +12,20 @@ export default class App extends React.Component {
         padding: 32
       }
     }
+    console.log('App props', this.props)
 
     return (
-      <div style={styles.root}>
-        <h1>jxnblk/min</h1>
-        <p>Bare minimum React + webpack + hot loader</p>
-        <nav>
-          <Link to='/' children='Home' />
-          <Link to='/about' children='About' />
-        </nav>
-        {React.cloneElement(children, this.props)}
-      </div>
+      <Root {...this.props}>
+        <div style={styles.root}>
+          <h1>jxnblk/min</h1>
+          <p>Bare minimum React + webpack + hot loader</p>
+          <nav>
+            <Link to='/' children='Home' />
+            <Link to='/about' children='About' />
+          </nav>
+          {React.cloneElement(children, this.props)}
+        </div>
+      </Root>
     )
   }
 }
