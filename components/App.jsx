@@ -20,7 +20,7 @@ export default class App extends React.Component {
           <Link to='/' children='Home' />
           <Link to='/about' children='About' />
         </nav>
-        {children}
+        {React.cloneElement(children, this.props)}
       </div>
     )
   }

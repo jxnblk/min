@@ -2,6 +2,7 @@
 require('babel/register')
 var StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin')
 
+var data = require('./data')
 // Doesn't handle dynamic segments
 var routes = require('./routes')
   .reduce(function (a, b, i) {
@@ -49,7 +50,7 @@ module.exports = {
   },
 
   plugins: [
-    new StaticSiteGeneratorPlugin('bundle.js', routes, {})
+    new StaticSiteGeneratorPlugin('bundle.js', routes, data)
   ]
 
 }

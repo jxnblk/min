@@ -21,7 +21,6 @@ return `
 }
 
 export default function render(locals, callback) {
-  // const location = createLocation(locals.path)
   const location = new Location(locals.path)
   Router.run(routes, location, (err, state) => {
     const component = <Router {...state} {...locals} />
