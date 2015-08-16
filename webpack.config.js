@@ -3,10 +3,12 @@ require('babel/register')
 var webpack = require('webpack')
 var StaticRenderPlugin = require('static-render-webpack-plugin')
 
-var store = require('./store').store
-store.setState({ baseurl: '/min' })
+var store = require('./store')
+store.setState({
+  script: '/bundle.js',
+  baseurl: '/min'
+})
 var baseurl = store.getState().baseurl
-console.log('config baseurl', baseurl)
 
 // Pull this programmatically from index.routes
 var routes = [
@@ -16,14 +18,11 @@ var routes = [
 
 module.exports = {
 
-  entry: {
-    static: ['./static'],
-    bundle: ['./index']
-  },
+  entry: ['./index'],
 
   output: {
     path: __dirname + '/dist' + baseurl,
-    filename: '[name].js',
+    filename: 'bundle.js',
     libraryTarget: 'umd'
   },
 

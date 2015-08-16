@@ -3,10 +3,9 @@ require('babel/register')
 var webpack = require('webpack')
 var StaticRenderPlugin = require('static-render-webpack-plugin')
 
-var store = require('./store').store
-var baseurl = store.getState().baseurl
-
-console.log('dev config baseurl', baseurl)
+var store = require('./store')
+var state = store.getState()
+var baseurl = state.baseurl
 
 var routes = [
   '/',
@@ -16,7 +15,7 @@ var routes = [
 module.exports = {
 
   entry: {
-    static: ['./static'],
+    static: ['./index'],
     bundle: [
       'webpack-dev-server/client?http://localhost:8080/',
       'webpack/hot/only-dev-server',

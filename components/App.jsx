@@ -3,7 +3,7 @@ import React from 'react'
 import { clone } from 'lodash'
 import { Link } from 'react-router'
 import Root from './Root'
-import { store } from '../store'
+import store from '../store'
 
 export default class App extends React.Component {
 

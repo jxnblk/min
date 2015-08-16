@@ -1,27 +1,11 @@
 
-import { assign } from 'lodash'
+import Store from './lib/Store'
 
-export function Store(init) {
-  let state = init || {}
-  let listeners = []
-  this.getState = () => state
-  this.setState = (obj) => {
-    state = assign(state, obj)
-    listeners.forEach(listener => listener())
-  }
-  this.listen = listener => listeners.push(listener)
-  this.unlisten = (listener) => {
-    const index = listeners.indexOf(listener)
-    listeners.splice(index, 1)
-  }
-  return this
-}
-
-export const store = new Store({
-  baseurl: ''
+const store = new Store({
+  title: 'jxnblk/min',
+  script: '/bundle.js',
+  baseurl: process.env.BASE_URL ? process.env.BASE_URL : ''
 })
 
-if (process.env.BASE_URL) {
-  store.setState({ baseurl: process.env.BASE_URL })
-}
+export default store
 
