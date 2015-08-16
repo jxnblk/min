@@ -1,8 +1,14 @@
 
+require('babel/register')
 var webpack = require('webpack')
 var StaticRenderPlugin = require('static-render-webpack-plugin')
 
-const routes = [
+var store = require('./store').store
+var baseurl = store.getState().baseurl
+
+console.log('dev config baseurl', baseurl)
+
+var routes = [
   '/',
   '/about'
 ]
@@ -19,7 +25,7 @@ module.exports = {
   },
 
   output: {
-    path: __dirname + '/dist',
+    path: __dirname + '/dist' + baseurl,
     filename: '[name].js',
     libraryTarget: 'umd'
   },
@@ -49,7 +55,7 @@ module.exports = {
   ],
 
   devServer: {
-    contentBase: './dist',
+    contentBase: './dist' + baseurl,
     historyApiFallback: true,
     hot: true,
   }

@@ -4,7 +4,8 @@
   "description": "Bare minimum React + webbpack + hot loader",
   "scripts": {
     "clean": "rm -rf dist/*",
-    "build": "webpack -p --progress --colors",
+    "build": "BASE_URL=/min webpack -p --progress --colors",
+    "gh-pages": "git subtree push --prefix dist/min origin gh-pages",
     "start": "webpack-dev-server --progress --colors --config webpack.dev.config.js"
   },
   "author": "Brent Jackson",
