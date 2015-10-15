@@ -38,7 +38,7 @@ module.exports = {
   ],
 
   devServer: {
-    hot: true,
+    hot: true
   }
 
 }

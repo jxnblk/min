@@ -7,4 +7,6 @@ npm i
 npm start
 ```
 
+Open <http://localhost:8080/bundle>
+
 MIT License
