@@ -2,7 +2,6 @@
 var webpack = require('webpack')
 
 module.exports = {
-
   entry:  [
     'webpack-dev-server/client?http://localhost:8080/',
     'webpack/hot/only-dev-server',
@@ -14,20 +13,12 @@ module.exports = {
     filename: 'bundle.js'
   },
 
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
-
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ['react-hot', 'babel']
-      },
-      {
-        test: /\.css$/,
-        loaders: ['style', 'raw']
+        loader: 'babel'
       }
     ]
   },
@@ -39,7 +30,7 @@ module.exports = {
 
   devServer: {
     hot: true,
+    historyApiFallback: true
   }
-
 }
 
